@@ -1,0 +1,21 @@
+<section class="chat">
+  <mat-toolbar color="primary" class="chat__toolbar">
+    <span>Chat</span>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="flex-fill"></span>
+
+    <button mat-icon-button aria-label="App logout icon">
+      <mat-icon>input</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-drawer-container class="chat__container">
+    <mat-drawer mode="side" opened>
+      <app-chat-users></app-chat-users>
+    </mat-drawer>
+    <mat-drawer-content class="chat__content">
+      <app-chat-widget></app-chat-widget>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>

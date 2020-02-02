@@ -1,0 +1,14 @@
+.chat {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &__container {
+        display: flex;
+        flex: 1 1 auto;
+    }
+
+    &__content {
+        flex: 1 1 auto;
+    }
+}

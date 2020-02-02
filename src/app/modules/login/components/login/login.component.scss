@@ -1,0 +1,12 @@
+.login {
+    padding: 20px;
+
+    &__card {
+        max-width: 360px;
+        margin: 0 auto;
+
+        &-input {
+            width: 100%;
+        }
+    }
+}

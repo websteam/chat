@@ -1,0 +1,39 @@
+<section class="chat-widget">
+  <div class="chat-widget__comments">
+    <div
+      *ngFor="let message of messages"
+      [class]="
+        message.isMine
+          ? 'chat-widget__message chat-widget__message--mine'
+          : 'chat-widget__message'
+      "
+    ></div>
+  </div>
+
+  <form class="chat-widget__form" [formGroup]="form" (submit)="onSubmit()">
+    <mat-form-field class="chat-widget__field">
+      <textarea
+        matInput
+        placeholder="Leave a message"
+        formControlName="content"
+        [attr.maxlength]="255"
+      ></textarea>
+
+      <mat-error
+        *ngIf="
+          form.get('content').hasError('required')
+        "
+      >
+        Please enter content
+      </mat-error>
+      <mat-error *ngIf="form.get('content').hasError('maxLength')">
+        Max length exceeded
+      </mat-error>
+
+      <mat-hint align="end"
+        >{{ form.get("content").value.length }} / 255</mat-hint
+      >
+    </mat-form-field>
+    <button mat-flat-button color="accent">Send</button>
+  </form>
+</section>

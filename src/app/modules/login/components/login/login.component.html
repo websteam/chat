@@ -1,0 +1,35 @@
+<section class="login">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-card class="login__card">
+      <mat-card-header>
+        <mat-card-title>Login to Chat</mat-card-title>
+        <mat-card-subtitle>Using your email</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="login__card-input">
+          <input matInput placeholder="Email" formControlName="email" />
+          <mat-error
+            *ngIf="
+              loginForm.get('email').hasError('email') &&
+              !loginForm.get('email').hasError('required')
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email').hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button [disabled]="loading">
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
+          Login
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</section>
