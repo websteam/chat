@@ -1,5 +1,5 @@
 <section class="chat-widget">
-  <div class="chat-widget__comments">
+  <div class="chat-widget__messages">
     <div
       *ngFor="let message of messages"
       [class]="
@@ -7,23 +7,27 @@
           ? 'chat-widget__message chat-widget__message--mine'
           : 'chat-widget__message'
       "
-    ></div>
+    >
+      <span class="chat-widget__message-content">
+        {{ message.content }}
+      </span>
+      <span class="chat-widget__message-date">
+        {{ message.created.date }}
+      </span>
+    </div>
   </div>
 
-  <form class="chat-widget__form" [formGroup]="form" (submit)="onSubmit()">
+  <form class="chat-widget__form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="chat-widget__field">
       <textarea
         matInput
         placeholder="Leave a message"
         formControlName="content"
         [attr.maxlength]="255"
+        (keydown.enter)="onSubmit($event)"
       ></textarea>
 
-      <mat-error
-        *ngIf="
-          form.get('content').hasError('required')
-        "
-      >
+      <mat-error *ngIf="form.get('content').hasError('required')">
         Please enter content
       </mat-error>
       <mat-error *ngIf="form.get('content').hasError('maxLength')">
@@ -34,6 +38,5 @@
         >{{ form.get("content").value.length }} / 255</mat-hint
       >
     </mat-form-field>
-    <button mat-flat-button color="accent">Send</button>
   </form>
 </section>

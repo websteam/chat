@@ -1,22 +1,42 @@
 .chat-widget {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__comments,
+  &__form {
+    width: 100%;
+  }
+
+  &__comments {
+    flex: 1 1 auto;
+  }
+
+  &__form {
     display: flex;
-    flex-direction: column;
-    height: 100%;
+    width: 100%;
+  }
 
-    &__comments, &__form {
-        width: 100%;
-    }
+  &__field {
+    flex: 1 1 auto;
+  }
 
-    &__comments {
-        flex: 1 1 auto;
-    }
+  &__messages {
+  }
 
-    &__form {
-        display: flex;
-        width: 100%;
-    }
+  &__message {
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    display: block;
+    color: #000;
+    display: flex;
+    float: left;
+    width: auto;
+    clear: both;
 
-    &__field {
-        flex: 1 1 auto;
+    &--mine {
+      float: right;
     }
+  }
 }

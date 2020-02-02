@@ -1,8 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "src/app/core/auth/auth.service";
-import { first } from 'rxjs/operators';
+import { first } from "rxjs/operators";
 
 @Component({
   selector: "app-login",
@@ -11,10 +16,12 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loading = false;AuthSAuthServiceervice
+  loading = false;
+  AuthSAuthServiceervice;
   submitted = false;
   returnUrl: string;
   error = "";
+  data = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +36,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl("test@test.pl", [Validators.required, Validators.email])
+      email: new FormControl("test@test.pl", [
+        Validators.required,
+        Validators.email
+      ])
     });
 
     // get return url from route parameters or default to '/'
