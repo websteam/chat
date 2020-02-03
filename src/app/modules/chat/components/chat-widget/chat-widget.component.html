@@ -1,19 +1,25 @@
 <section class="chat-widget">
-  <div class="chat-widget__messages">
+  <div class="chat-widget__messages" #messagesTrail>
     <div
-      *ngFor="let message of messages"
-      [class]="
-        message.isMine
-          ? 'chat-widget__message chat-widget__message--mine'
-          : 'chat-widget__message'
-      "
+      class="chat-widget__message-container"
+      *ngFor="let container of containers"
     >
-      <span class="chat-widget__message-content">
-        {{ message.content }}
-      </span>
-      <span class="chat-widget__message-date">
-        {{ message.created.date }}
-      </span>
+      <span>{{ container.recipent.name }}</span>
+      <div
+        *ngFor="let message of container.messages"
+        [class]="
+          message.isMine
+            ? 'chat-widget__message chat-widget__message--mine'
+            : 'chat-widget__message'
+        "
+      >
+        <span class="chat-widget__message-content">
+          {{ message.content }}
+        </span>
+        <span class="chat-widget__message-date">
+          {{ message.created.date | date: "d/M/yyyy h:mm:ss" }}
+        </span>
+      </div>
     </div>
   </div>
 

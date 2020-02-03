@@ -1,6 +1,6 @@
 export class User {
-  public id: number;
-  public name: string;
-  public email: string;
-  public last_login?: Date;
+  id: number;
+  name: string;
+  email: string;
+  last_login?: Date;
 }
