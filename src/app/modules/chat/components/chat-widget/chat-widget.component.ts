@@ -53,7 +53,7 @@ export class ChatWidgetComponent implements OnInit, AfterViewInit, OnDestroy {
 
   reloadMessages() {
     this.containers = [];
-    let currentContainer: MessagesContainer;
+    let currentContainer: MessagesContainer = null;
 
     this.chat.getMessages().subscribe((messages: Message[]) => {
       messages.forEach((message: Message) => {
@@ -61,11 +61,7 @@ export class ChatWidgetComponent implements OnInit, AfterViewInit, OnDestroy {
           !currentContainer ||
           currentContainer.recipent.id != message.user.id
         ) {
-          if (currentContainer) {
-            this.containers.push(currentContainer);
-          }
-
-          currentContainer = new MessagesContainer(message.user);
+          this.containers.push(currentContainer = new MessagesContainer(message.user));
         }
 
         if (currentContainer) {
